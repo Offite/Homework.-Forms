@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Добавление пункта в выпадающий список</title>
+</head>
+<body>
+    <select id="genres">
+        <option value="rock">Рок</option>
+        <option value="blues" selected>Блюз</option>
+    </select>
+
+    <button onclick="addOption()">Добавить пункт</button>
+    <button onclick="getSelected()">Вывести выбранный пункт</button>
+
+    <p id="selected"></p>
+
+    <script>
+        function addOption() {
+            let select = document.getElementById('genres');
+            let option = document.createElement('option');
+            option.value = 'classic';
+            option.text = 'Классика';
+            select.add(option);
+            select.selectedIndex = select.length - 1;
+        }
+
+        function getSelected() {
+            let select = document.getElementById('genres');
+            let selectedOption = select.options[select.selectedIndex];
+            let selectedText = selectedOption.text;
+            let selectedValue = selectedOption.value;
+            document.getElementById('selected').innerHTML = 'Текст: ' + selectedText + ', Значение: ' + selectedValue;
+        }
+    </script>
+</body>
+</html>

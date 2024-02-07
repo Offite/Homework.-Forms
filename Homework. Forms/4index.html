@@ -1,0 +1,74 @@
+Депозитный калькулятор
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      width: 300px;
+      margin: 0 auto;
+    }
+    .form-group {
+      margin-bottom: 10px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 5px;
+    }
+    .form-group button {
+      padding: 5px 10px;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    .form-group button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Депозитный калькулятор</h2>
+    <form id="deposit-form">
+      <div class="form-group">
+        <label for="deposit-amount">Сумма вклада:</label>
+        <input type="number" id="deposit-amount" required>
+      </div>
+      <div class="form-group">
+        <label for="interest-rate">Процент:</label>
+        <input type="number" id="interest-rate" required>
+      </div>
+      <div class="form-group">
+        <label for="time-period">Промежуток времени:</label>
+        <input type="number" id="time-period" required>
+      </div>
+      <div class="form-group">
+        <button type="button" onclick="calculateDeposit()">Рассчитать</button>
+      </div>
+      <div class="form-group">
+        <label for="result">Результат:</label>
+        <input type="text" id="result" disabled>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function calculateDeposit() {
+      let depositAmount = document.getElementById('deposit-amount').value;
+      let interestRate = document.getElementById('interest-rate').value;
+      let timePeriod = document.getElementById('time-period').value;
+      let result = depositAmount * (1 + interestRate / 100) ** timePeriod;
+      document.getElementById('result').value = result.toFixed(2);
+    }
+  </script>
+
+</body>
+</html>
